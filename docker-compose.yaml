@@ -1,0 +1,15 @@
+services:
+  linuxserver-firefox:
+    image: linuxserver/firefox:latest
+    container_name: linuxserver-firefox
+    ports:
+      - "3001:3001"
+    environment:
+      - FILE_MANAGER_PATH=/downloads
+      - CUSTOM_USER=admin
+      - PASSWORD=your_password
+    volumes:
+      - /docker/appdata/linuxserver-firefox:/config
+      - /docker/appdata/linuxserver-firefox/Downloads:/downloads
+    shm_size: "2gb"
+    restart: unless-stopped
